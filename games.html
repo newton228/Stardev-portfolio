@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Games Portfolio</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #4CAF50; /* A nice green for Games */
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .game-list {
+            max-width: 900px;
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .game-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            text-align: left;
+        }
+
+        .game-card h2 {
+            color: #4CAF50;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .game-card .links a {
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-right: 15px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .game-card .links a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html">← Back to Main Options</a>
+        <h1>My Awesome Video Games 🕹️</h1>
+        <p>Play them, watch the development videos, and give me feedback!</p>
+    </header>
+
+    <div class="game-list">
+        <div class="game-card">
+            <h2>The Cosmic Wanderer</h2>
+            <p>A 2D platformer where you jump through space collecting rare crystals. Built with Godot Engine.</p>
+            <p><strong>Status:</strong> Alpha Test - Looking for players!</p>
+            <div class="links">
+                <a href="[Your Game's Download/Itch.io Link]">Play Game Now</a>
+                <a href="[Your YouTube Devlog Video Link]">Watch Devlog on YouTube</a>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <h2>Zombie Defense Tower</h2>
+            <p>A fast-paced tower defense game built for mobile devices. Try to survive 50 waves of zombies.</p>
+            <p><strong>Status:</strong> Complete (v1.0)</p>
+            <div class="links">
+                <a href="[Your Game's App Store/Google Play Link]">Get on Mobile</a>
+                <a href="[Another YouTube Video Link]">Behind the Scenes</a>
+            </div>
+        </div>
+
+        </div>
+
+</body>
+</html>

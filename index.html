@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Developer Portfolio</title>
+    <style>
+        /* CSS will go here */
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        .options-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px;
+        }
+
+        .option-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 250px;
+            transition: transform 0.3s;
+        }
+
+        .option-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .option-card h3 {
+            color: #333;
+        }
+
+        .option-card a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        /* Styling for the unavailable pages */
+        .unavailable a {
+            color: #999;
+            border-color: #999;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Welcome to My Creative Corner!</h1>
+        <p>Your hub for all my YouTube games, robots, and websites.</p>
+    </header>
+
+    <div class="options-container">
+        <div class="option-card">
+            <h3>🎮 Games</h3>
+            <p>Check out my latest video games and projects.</p>
+            <a href="games.html">Go to Games</a>
+        </div>
+
+        <div class="option-card unavailable">
+            <h3>🌐 Websites</h3>
+            <p>My web design and development projects.</p>
+            <a href="unavailable.html">Under Development</a>
+        </div>
+
+        <div class="option-card unavailable">
+            <h3>🤖 Robots</h3>
+            <p>See my cool robotic creations!</p>
+            <a href="unavailable.html">Under Development</a>
+        </div>
+    </div>
+
+</body>
+</html>
