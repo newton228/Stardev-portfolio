@@ -4,71 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Developer Portfolio</title>
-    <style>
-        /* CSS will go here */
-        body {
-            font-family: sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        .header {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-        }
-
-        .options-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 50px;
-        }
-
-        .option-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            width: 250px;
-            transition: transform 0.3s;
-        }
-
-        .option-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .option-card h3 {
-            color: #333;
-        }
-
-        .option-card a {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-            padding: 10px 20px;
-            border: 2px solid #007bff;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 15px;
-        }
-
-        /* Styling for the unavailable pages */
-        .unavailable a {
-            color: #999;
-            border-color: #999;
-            cursor: not-allowed;
-        }
-    </style>
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="header">
+   <header class="header">
+    <div class="header-content">
+        <div class="logo">
+            <span role="img" aria-label="Star and Chip">✨💾</span>
+            <a href="index.html">StarDev Hub</a>
+        </div>
         <h1>Welcome to My Creative Corner!</h1>
-        <p>Your hub for all my YouTube games, robots, and websites.</p>
-    </header>
+    </div>
+    
+    <div class="theme-switch-wrapper">
+        <span>Light</span>
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" onclick="toggleTheme()"/>
+            <div class="slider round"></div>
+        </label>
+        <span>Dark</span>
+    </div>
+</header>
 
     <div class="options-container">
         <div class="option-card">
@@ -89,6 +46,43 @@
             <a href="unavailable.html">Under Development</a>
         </div>
     </div>
+
+<script>
+    function toggleTheme() {
+        const body = document.body;
+        
+        // Toggle the 'light-theme' class on the body (since dark is the default now)
+        body.classList.toggle('light-theme');
+
+        // Save the user's preference in their browser's local storage
+        if (body.classList.contains('light-theme')) {
+            localStorage.setItem('theme', 'light');
+        } else {
+            localStorage.setItem('theme', 'dark'); // Now toggles back to the CSS default (dark)
+        }
+    }
+
+    // Check saved preference on page load
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // only need to check if they saved 'light'
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-theme');
+            // Check the checkbox to visually reflect the setting
+            const checkbox = document.getElementById('checkbox');
+            if (checkbox) {
+                checkbox.checked = false; // Checkbox is OFF for light mode in this setup
+            }
+        }
+    });
+</script>
+
+    <footer class="footer">
+    <p>&copy; 2026 StarDev Hub. All rights reserved.</p>
+    <div class="social-links">
+        <a href="http://www.youtube.com/@ItsStarDev" target="_blank" aria-label="YouTube Channel">🎬 YouTube</a>
+        <a href="https://github.com/newton228" target="_blank" aria-label="GitHub Profile">💾 GitHub</a>
+    </div>
+</footer>
 
 </body>
 </html>
