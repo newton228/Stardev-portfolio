@@ -14,9 +14,8 @@
         .iframe-wrapper {
             position: relative;
             width: 100%;
-            max-width: 600px; /* The game's native width */
+            max-width: 600px;
             margin: 20px auto;
-            /* 650px / 600px = 1.08333... */
             padding-bottom: 108.3333%; 
             height: 0;
             background-color: var(--card-background);
@@ -80,6 +79,7 @@
             if (localStorage.getItem('theme') === 'light') {
                 document.body.classList.add('light-theme');
                 const checkbox = document.getElementById('checkbox');
+                // Checkbox needs to be unchecked if light mode is loaded 
                 if (checkbox) {
                     checkbox.checked = false; 
                 }
