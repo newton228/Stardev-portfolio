@@ -10,15 +10,18 @@
             text-align: center;
             padding: 30px 10px;
         }
-        /* --- Responsive Container for 4:3 Aspect Ratio (800x600) --- */
+        
         .iframe-wrapper {
             position: relative;
             width: 100%;
-            max-width: 800px; /* Max width to maintain desktop size */
+            max-width: 600px; /* The game's native width */
             margin: 20px auto;
-            padding-bottom: 75%; /* 600px / 800px = 0.75 (75%) */
+            /* 650px / 600px = 1.08333... */
+            padding-bottom: 108.3333%; 
             height: 0;
+            background-color: var(--card-background);
         }
+        
         .iframe-wrapper iframe {
             position: absolute;
             top: 0;
@@ -65,10 +68,22 @@
 
     <script>
         function toggleTheme() {
-            // ... (Use the same toggleTheme script as in games.html)
+            const body = document.body;
+            body.classList.toggle('light-theme');
+            if (body.classList.contains('light-theme')) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
         }
         document.addEventListener('DOMContentLoaded', (event) => {
-            // ... (Use the same DOMContentLoaded script as in games.html)
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.add('light-theme');
+                const checkbox = document.getElementById('checkbox');
+                if (checkbox) {
+                    checkbox.checked = false; 
+                }
+            }
         });
     </script>
 </body>
