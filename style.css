@@ -1,6 +1,7 @@
+/
 
+/* LIGHT MODE DEFAULTS (Sharp White Mode) */
 :root {
-    /* LIGHT MODE DEFAULTS (Sharp White Mode) */
     --primary-color: #333333; /* Dark Grey Accent/Button */
     --secondary-color: #AAAAAA; /* Light Grey Border/Hover */
     --background-color: #FFFFFF; /* Pure White Background */
@@ -12,16 +13,16 @@
 
 /* DARK MODE BASE (The Default Look: Black/Silent) */
 body {
-    --primary-color: #FFFFFF; /* White Accent/Text */
+    --primary-color: #FAFAFA; /* White Accent/Text */
     --secondary-color: #555555; /* Muted Grey for details/borders */
     --background-color: #000000; /* Pure Black Background */
     --card-background: #111111; /* Near-Black Card */
     --text-color: #FAFAFA; /* Off-White Text */
-    --shadow: 0 4px 12px rgba(255, 255, 255, 0.1); /* Subtle White Glow */
+    --shadow: 0 4px 12px rgba(255, 255, 255, 0.05); /* Very Subtle White Glow */
     --border-style: 1px solid #333333;
 }
 
-
+/* Overrides the default DARK variables ONLY when 'light-theme' is present */
 body.light-theme {
     --primary-color: #333333;
     --secondary-color: #AAAAAA;
@@ -33,12 +34,12 @@ body.light-theme {
 }
 
 
-/* --- Global Styles: Ensuring Ratio Consistency (The 'Silent' Look) --- */
+/* --- Global Styles: Ensuring Consistent Ratio and Flow --- */
 body {
-    font-family: 'Arial', sans-serif; /* Clean, default font */
+    font-family: 'Arial', sans-serif;
     text-align: center;
     margin: 0;
-    padding: 0 1rem; /* Use rem for fluid padding based on font size */
+    padding: 0 1rem; 
     min-width: 320px;
     background-color: var(--background-color);
     color: var(--text-color);
@@ -51,17 +52,22 @@ body {
 .header {
     background-color: var(--card-background);
     color: var(--text-color);
-    padding: 1.5rem 2rem; /* Consistent ratio padding */
+    padding: 1.5rem 2rem; 
     border-bottom: var(--border-style);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: none; /* No shadow for minimalism */
+    box-shadow: none;
     flex-wrap: wrap;
 }
 
+.header-content {
+    /* Ensures content doesn't crash into the switch on desktop */
+    margin-right: 2rem; 
+}
+
 .header h1 {
-    font-size: 1.8rem; /* Ratio Size */
+    font-size: 1.8rem;
     margin: 0;
     color: var(--primary-color);
     font-weight: 500;
@@ -87,23 +93,54 @@ body {
     color: var(--primary-color);
 }
 
-/* --- Dark/Light Mode Toggle Styling --- */
+/* --- Dark/Light Mode Toggle Styling (The Switch Look) --- */
 .theme-switch-wrapper {
-    /* Reduced spacing */
-    margin-left: 1.5rem;
     color: var(--text-color);
+    cursor: pointer;
+    /* Ratio spacing */
+    margin-left: 2rem; 
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
 }
 .theme-switch {
+    display: inline-block;
     height: 25px;
+    position: relative;
     width: 45px;
+    margin: 0 0.75rem;
+}
+.theme-switch input {
+    display: none;
+}
+.slider {
+    background-color: var(--secondary-color);
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition: 0.4s;
+    position: absolute;
+    border-radius: 25px; /* Rounded track */
 }
 .slider:before {
-    height: 21px;
-    width: 21px;
+    background-color: var(--card-background);
     bottom: 2px;
+    content: "";
+    height: 21px;
+    left: 2px;
+    transition: 0.4s;
+    width: 21px;
+    position: absolute;
+    border-radius: 50%; /* Round knob */
+    border: 1px solid var(--secondary-color);
+}
+input:checked + .slider {
+    background-color: var(--primary-color);
 }
 input:checked + .slider:before {
-    transform: translateX(18px);
+    transform: translateX(20px);
 }
 
 
@@ -112,25 +149,25 @@ input:checked + .slider:before {
     display: flex;
     flex-wrap: wrap; 
     justify-content: center;
-    gap: 2rem; /* Ratio Spacing */
+    gap: 2rem; 
     padding: 3rem 1rem;
 }
 
 .option-card {
     background-color: var(--card-background);
     color: var(--text-color);
-    padding: 2rem; /* Ratio Padding */
-    border-radius: 0; /* Square corners for minimalism */
+    padding: 2rem; 
+    border-radius: 0; 
     box-shadow: none; 
     border: var(--border-style);
     width: 100%; 
-    max-width: 320px; /* Max Ratio Width */
+    max-width: 320px; 
     min-width: 280px; 
     transition: background-color 0.3s;
 }
 
 .option-card:hover {
-    transform: none; /* Remove bouncy effect */
+    transform: none;
     background-color: var(--secondary-color);
 }
 
@@ -146,7 +183,7 @@ input:checked + .slider:before {
     word-wrap: break-word; 
     overflow-wrap: break-word; 
     text-align: left; 
-    margin: 0.8rem 0; /* Ratio Margin */
+    margin: 0.8rem 0;
 }
 
 /* Active Link Button */
@@ -155,14 +192,14 @@ input:checked + .slider:before {
     color: var(--card-background);
     background-color: var(--primary-color);
     font-weight: 600;
-    padding: 0.75rem 1.5rem; /* Ratio Padding */
+    padding: 0.75rem 1.5rem;
     border-radius: 0;
     margin-top: 1rem;
 }
 
-
+/* --- Game Card Styles (games.html specific) --- */
 .game-list {
-    max-width: 960px; /* Wider ratio for game list */
+    max-width: 960px;
     margin: 3rem auto;
     padding: 0 1rem;
     display: flex;
@@ -208,8 +245,6 @@ input:checked + .slider:before {
 }
 
 
-
-
 @media (max-width: 600px) {
     body, html {
         overflow-x: hidden;
@@ -218,7 +253,7 @@ input:checked + .slider:before {
     .header {
         flex-direction: column; 
         align-items: flex-start;
-        padding: 1rem; /* Smaller mobile padding */
+        padding: 1rem; 
     }
     
     .header-content, .logo {
@@ -226,11 +261,13 @@ input:checked + .slider:before {
         text-align: center;
         justify-content: center;
         margin-bottom: 0.5rem;
+        margin-right: 0; /* Remove desktop margin on mobile */
     }
 
     .theme-switch-wrapper {
         align-self: center;
         margin-top: 0.5rem;
+        margin-left: 0; /* Remove desktop margin on mobile */
         min-width: 200px; 
         justify-content: space-between;
     }
