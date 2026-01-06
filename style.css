@@ -262,7 +262,96 @@ input:checked + .slider:before {
     transition: color 0.2s;
 }
 
+/* --- MOBILE RESPONSIVENESS (Media Queries) --- */
+
+@media (max-width: 768px) {
+    /* 1. Header Adjustments */
+    .header {
+        /* Stack header content vertically on mobile */
+        flex-direction: column; 
+        align-items: flex-start;
+        padding: 15px;
+    }
+    
+    .header-content {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .header h1 {
+        font-size: 1.5em; /* Smaller title */
+    }
+
+    /* Move logo/h1 above the theme switch */
+    .logo {
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* Move theme switch to be centered under the main title area */
+    .theme-switch-wrapper {
+        align-self: center; /* Center the switch */
+        margin-top: 5px;
+        font-size: 0.8em;
+    }
+
+    /* 2. Main Options Layout Fix */
+    .options-container {
+        /* Change from row (flex-direction: row) to column (stacking cards) */
+        flex-direction: column;
+        align-items: center; /* Center the stack */
+        gap: 20px; /* Reduce gap between stacked cards */
+        padding: 30px 10px;
+    }
+
+    .option-card {
+        width: 90%; /* Make cards take up most of the screen width */
+        max-width: 400px; /* Cap the width just in case */
+        padding: 20px;
+    }
+
+    .option-card h3 {
+        font-size: 1.1em;
+    }
+
+    /* 3. Game Card Layout Fix (games.html) */
+    .game-list {
+        margin: 30px 10px;
+    }
+    
+    .game-card {
+        border-left: none; /* Remove the vertical bar on mobile */
+        border-top: 5px solid var(--primary-color); /* Use a horizontal bar instead */
+    }
+
+    .game-card .links {
+        /* Stack the buttons if too long */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .game-card .links a {
+        margin: 0;
+        text-align: center;
+    }
+
+    /* 4. Footer Adjustment */
+    .footer {
+        flex-direction: column;
+    }
+    .footer .social-links {
+        margin-top: 10px;
+    }
+    .footer .social-links a {
+        margin: 0 8px; /* Reduce space between social icons */
+    }
+}
+
 .footer .social-links a:hover {
     color: var(--secondary-color);
     text-decoration: underline;
+
 }
