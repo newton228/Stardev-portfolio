@@ -3,88 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StarDev Games 🎮</title>
+    <title>StarDev Games 🕹️</title>
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
 
     <header class="header">
-    <div class="header-content">
-        <div class="logo">
-            <span role="img" aria-label="Star and Chip">✨💾</span>
-            <a href="index.html">StarDev Hub</a>
+        <div class="header-content">
+            <a href="index.html">← Back to Main StarDev Hub</a>
+            <h1>My Games 🕹️</h1>
         </div>
-        <h1>stardev Games</h1>
-    </div>
-    
-    <div class="theme-switch-wrapper">
-        <span>Light</span>
-        <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox" onclick="toggleTheme()"/>
-            <div class="slider round"></div>
-        </label>
-        <span>Dark</span>
-    </div>
-</header>
+        
+        <div class="theme-switch-wrapper">
+            <span>Dark</span>
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" onclick="toggleTheme()" checked/> 
+                <div class="slider round"></div>
+            </label>
+            <span>Light</span>
+        </div>
+    </header>
+
     <div class="game-list">
         <div class="game-card">
-            <h2>ai flappy bird</h2>
-            <p>you can try it but i don't know if anything will work cuz ai did all the work.</p>
-            <p><strong>Status:</strong> this is all ai </p>
+            <h2>🧠 AI Flappy Bird Trainer</h2>
+            <p>You can try it, but I don't know if anything will work, as the AI did all the work!</p>
+            <p><strong>Status:</strong> This is all AI</p>
             <div class="links">
-                <a href="flappy.html">🌟 Play Now!</a>
-                <a href="https://youtube.com/shorts/RzLOMBOFj1M?si=2m2OhB9GYaxXqKBr">🎬 Watch the YouTubeshort</a>
+                <a href="flappy.html">🌟 Run the AI Simulation</a> 
+                <a href="https://youtube.com/shorts/RzLOMBOFj1M?si=2m2OhB9GYaxXqKBr">🎬 Watch the YouTube Short</a>
             </div>
         </div>
 
         <div class="game-card">
-            <h2>chrome dino2 </h2>
-            <p>My first big project! probaly wont work on mobile</p>
-            <p><strong>Status:</strong> Finished I think </p>
+            <h2>🦖 Chrome Dino 2: Enhanced Edition</h2>
+            <p>My first big project! Probably won't work on mobile devices.</p>
+            <p><strong>Status:</strong> Finished I think</p>
             <div class="links">
-                <a href="dino.html">play</a>
-                <a href="https://youtube.com/shorts/mNZpmBhiPYg?si=KO3FGGxlMgmCP2NW">📼 youtubechallenge</a>
+                <a href="dino.html" id="dino-link">🕹️ Play Now!</a> 
+                <a href="https://youtube.com/shorts/mNZpmBhiPYg?si=KO3FGGxlMgmCP2NW">📼 YouTube Challenge</a>
             </div>
         </div>
+    </div>
 
+    <footer class="footer">
+        <p>&copy; 2026 StarDev Hub. All rights reserved.</p>
+        <div class="social-links">
+            <a href="http://www.youtube.com/@ItsStarDev" target="_blank" aria-label="YouTube Channel">🎬 YouTube</a>
+            <a href="https://github.com/newton228" target="_blank" aria-label="GitHub Profile">💾 GitHub</a>
         </div>
+    </footer>
 
-<script>
-    function toggleTheme() {
-        const body = document.body;
-        
-        // Toggle the 'light-theme' class on the body (since dark is the default now)
-        body.classList.toggle('light-theme');
-
-        // Save the user's preference in their browser's local storage
-        if (body.classList.contains('light-theme')) {
-            localStorage.setItem('theme', 'light');
-        } else {
-            localStorage.setItem('theme', 'dark'); // Now toggles back to the CSS default (dark)
-        }
-    }
-
-    // Check saved preference on page load
-    document.addEventListener('DOMContentLoaded', (event) => {
-        // only need to check if they saved 'light', otherwise it defaults to dark (our new base)
-        if (localStorage.getItem('theme') === 'light') {
-            document.body.classList.add('light-theme');
-            // Check the checkbox to visually reflect the setting
-            const checkbox = document.getElementById('checkbox');
-            if (checkbox) {
-                checkbox.checked = false; // Checkbox is OFF for light mode in this setup
+    <script>
+        // --- Dark/Light Mode Script ---
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('light-theme');
+            if (body.classList.contains('light-theme')) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
             }
         }
-    });
-</script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Apply saved theme
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.add('light-theme');
+                const checkbox = document.getElementById('checkbox');
+                if (checkbox) {
+                    checkbox.checked = false; 
+                }
+            }
+            
+            // --- Mobile Dino Restriction Script ---
+            const dinoLink = document.getElementById('dino-link');
+            // Check for common mobile screen sizes and touch support
+            const isMobile = /Mobi|Android/i.test(navigator.userAgent) && window.innerWidth < 768;
 
- <footer class="footer">
-    <p>&copy; 2026 StarDev Hub. All rights reserved.</p>
-    <div class="social-links">
-        <a href="http://www.youtube.com/@ItsStarDev" target="_blank" aria-label="YouTube Channel">🎬 YouTube</a>
-        <a href="https://github.com/newton228" target="_blank" aria-label="GitHub Profile">💾 GitHub</a>
-    </div>
-</footer>
-
+            if (isMobile) {
+                // Change the link to prevent click and update the text
+                dinoLink.href = "#";
+                dinoLink.onclick = function(e) {
+                    e.preventDefault();
+                    alert("This game is not optimized for mobile. Please try on a desktop computer.");
+                };
+                dinoLink.textContent = "🚫 Desktop Only";
+                dinoLink.style.backgroundColor = 'var(--secondary-color)';
+            }
+        });
+    </script>
 </body>
 </html>
